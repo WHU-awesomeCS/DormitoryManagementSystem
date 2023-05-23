@@ -1,10 +1,10 @@
-﻿namespace DMS.Data.Entities
+namespace DMS.Data.Entities
 {
     public class Account
     {
-        public int id { get; set; }
-        public int 用户名 { get; set; }
-        public int 密码 { get; set; }
-        public int 用户角色 { get; set; }
+        public string Id { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string UserRole { get; set; }
     }
 }

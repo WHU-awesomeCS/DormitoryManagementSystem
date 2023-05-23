@@ -2,12 +2,15 @@
 {
     public class LeaveApplication
     {
-        public int id { get; set; }
-        public int 学生id { get; set; }
-        public int 开始时间 { get; set; }
-        public int 结束时间 { get; set; }
-        public int 请假事由 { get; set; }
-        public int 审批状态 { get; set; }
-        public int 审批人 { get; set; }
+        public string Id { get; set; }
+        public string StudentId { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public string Reason { get; set; }
+        public string ApplicationStatus { get; set; }
+        public string Applicant { get; set; }
+
+        public Student Student { get; set; }
+        public Teacher Teacher { get; set; }
     }
 }

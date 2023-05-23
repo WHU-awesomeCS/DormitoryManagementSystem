@@ -2,11 +2,13 @@
 {
     public class Teacher
     {
-        public int 工号 { get; set; }
-        public string 姓名 { get; set; }
-        public int 手机 { get; set; }
-        public int 所在院系 { get; set; }
-        public int 邮箱 { get; set; }
-        public int 所负责的宿舍号 { get; set; }
+        public string Name { get; set; }
+        public string WorkId { get; set; }
+        public string PhoneNumber { get; set; }
+        public int Department { get; set; }
+        public string Email { get; set; }
+        public string DormitoryInCharge { get; set; }
+
+        public Dormitory Dormitory { get; set; }
     }
 }

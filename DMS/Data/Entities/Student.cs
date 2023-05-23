@@ -2,14 +2,16 @@
 {
     public class Student
     {
-        public int 学号 { get; set; }
-        public string 姓名 { get; set; }
-        public int 所在院系 { get; set; }
-        public int 性别 { get; set; }
-        public int 年龄 { get; set; }
-        public int 电话 { get; set; }
-        public int 宿舍号 { get; set; }
-        public int 是否请假 { get; set; }
-        public int 请假日期 { get; set; }
+        public string Name { get; set; }
+        public string StudentId { get; set; }
+        public int Department { get; set; }
+        public bool Gender { get; set; }
+        public int Age { get; set; }
+        public string PhoneNumber { get; set; }
+        public string DormitoryNumber { get; set; }
+        public bool WhetherLeave { get; set; }
+        public DateTime? LeaveDate { get; set; }
+
+        public Room Room { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Principal;
 using DMS.Data.Entities;
+using System;
 
 namespace DMS
 {
@@ -12,6 +13,10 @@ namespace DMS
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySQL("ConnectionStrings");
+        }
         // 定义实体集和数据库表的映射关系    
         public DbSet<Student> Students { get; set; }
         public DbSet<Dormitory> Dormitories { get; set; }
@@ -23,6 +28,86 @@ namespace DMS
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Visitor> Visitors { get; set; }
         public DbSet<LeaveApplication> LeaveApplications { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Student>()
+                .HasKey(s => s.StudentId);
+
+            modelBuilder.Entity<Dormitory>()
+                .HasKey(d => d.DormitoryNumber);
+
+            modelBuilder.Entity<Room>()
+                .HasKey(r => r.RoomNumber);
+
+            modelBuilder.Entity<Staff>()
+                .HasKey(s => s.WorkId);
+
+            modelBuilder.Entity<Teacher>()
+                .HasKey(t => t.WorkId);
+
+            modelBuilder.Entity<Account>()
+                .HasKey(a => a.Id);
+
+            modelBuilder.Entity<RepairRequest>()
+                .HasKey(r => r.Id);
+
+            modelBuilder.Entity<Notification>()
+                .HasKey(n => n.Id);
+
+            modelBuilder.Entity<Visitor>()
+                .HasKey(v => v.Id);
+
+            modelBuilder.Entity<LeaveApplication>()
+                .HasKey(l => l.Id);
+
+            modelBuilder.Entity<Student>()
+                .HasOne<Room>()
+                .WithMany()
+                .HasForeignKey(s => s.DormitoryNumber);
+
+            modelBuilder.Entity<Room>()
+                .HasOne<Dormitory>()
+                .WithMany()
+                .HasForeignKey(r => r.dormitory);
+
+            modelBuilder.Entity<Staff>()
+                .HasOne<Dormitory>()
+                .WithMany()
+                .HasForeignKey(s => s.DormitoryInCharge);
+
+            modelBuilder.Entity<Teacher>()
+                .HasOne<Dormitory>()
+                .WithMany()
+                .HasForeignKey(t => t.DormitoryInCharge);
+
+            modelBuilder.Entity<RepairRequest>()
+                .HasOne<Student>()
+                .WithMany()
+                .HasForeignKey(r => r.StudentId);
+
+            modelBuilder.Entity<RepairRequest>()
+                .HasOne<Room>()
+                .WithMany()
+                .HasForeignKey(r => r.RoomNumber);
+
+            modelBuilder.Entity<Visitor>()
+                .HasOne<Dormitory>()
+                .WithMany()
+                .HasForeignKey(v => v.DormitoryNumber);
+
+            modelBuilder.Entity<LeaveApplication>()
+                .HasOne<Student>()
+                .WithMany()
+                .HasForeignKey(l => l.StudentId);
+
+            modelBuilder.Entity<LeaveApplication>()
+                .HasOne<Teacher>()
+                .WithMany()
+                .HasForeignKey(l => l.Applicant);
+        }
+
     }
     public class Startup
     {
@@ -35,12 +120,10 @@ namespace DMS
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = Configuration.GetConnectionString("MySqlConnection");
-
             services.AddDbContext<MyDbContext>(options =>
-                options.UseMySQL(connectionString));
+                options.UseMySQL("ConnectionStrings"));
 
-            // 其他服务注册和配置...
+            // 其他服务配置代码...
         }
 
         public void Configure()
