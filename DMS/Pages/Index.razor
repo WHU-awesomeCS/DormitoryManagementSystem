@@ -1,9 +1,21 @@
 ﻿@page "/"
-
+@inject DMS.Controllers.HomeController HomeControllerInstance
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<p>@jsonData</p>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    private string? jsonData;
+
+
+    protected override void OnInitialized()
+    {
+        var result = HomeControllerInstance.Index();
+        // 处理 result 中的数据
+        // 将数据转换为 JSON 字符串或进行其他操作
+        var json = JsonSerializer.Serialize(result);
+        // 将结果赋值给 jsonData 变量
+        jsonData = json;
+    }
+}

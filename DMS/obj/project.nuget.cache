@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OgNJ98sVmF1+d2aTblCMl8j0HMl9GoyoSYxrN7l8ix+WFbQVm7OMvBkzMwyy02yv0roNrJyxhgXA/EfuMT87rg==",
+  "dgSpecHash": "S90Qag6r/rxdXNTQYqRdm8Lh3CbY4GtIg02LkHEUgl8gQNLIo4k5Mw6TWgQWq04L+Q69dRkAAJREzZlR2pR4Yw==",
   "success": true,
   "projectFilePath": "C:\\Users\\2021\\Desktop\\DMS\\DormitoryManagementSystem\\DMS\\DMS.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,8 @@
     "C:\\Users\\2021\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\2021\\.nuget\\packages\\mysql.data\\8.0.33\\mysql.data.8.0.33.nupkg.sha512",
     "C:\\Users\\2021\\.nuget\\packages\\mysql.entityframeworkcore\\7.0.2\\mysql.entityframeworkcore.7.0.2.nupkg.sha512",
+    "C:\\Users\\2021\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512",
+    "C:\\Users\\2021\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "C:\\Users\\2021\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
     "C:\\Users\\2021\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\2021\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.1\\system.configuration.configurationmanager.4.4.1.nupkg.sha512",
