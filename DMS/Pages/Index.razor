@@ -1,5 +1,5 @@
 ﻿@page "/"
-@inject DMS.Controllers.HomeController HomeControllerInstance
+@inject MyDbContext MyDbContextInstance
 <PageTitle>Index</PageTitle>
 
 
@@ -9,13 +9,11 @@
     private string? jsonData;
 
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        var result = HomeControllerInstance.Index();
-        // 处理 result 中的数据
-        // 将数据转换为 JSON 字符串或进行其他操作
-        var json = JsonSerializer.Serialize(result);
-        // 将结果赋值给 jsonData 变量
+        string id = "2";
+        var data = await MyDbContextInstance.Accounts.Where(a => a.id.Equals(id)).ToListAsync();
+        var json = JsonSerializer.Serialize(data);
         jsonData = json;
     }
 }
